@@ -2,14 +2,14 @@
     let key = event.key;
     if (key === "Enter") {
       event.preventDefault();
-      let data = {
-        id:null,
-        name: document.querySelector("#post").value,
-      };
-      if (data.name.length) {
+      let postValue = document.querySelector("#post").value;
+      let [id, name] = $("#post_id").is(":checked") ? [postValue, null] : ["", postValue];
+      let data = {id, name};
+      if (data.id || data.name.length) {
         $.post("http://magicajax-php/", data, () => {
         });
         $("#post").val("");
       }
     }
+   /*if(key === "")*/
   });

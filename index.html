@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <title>Magic Ajax</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/style.css"/>
 </head>
 <body>
-
-<form id="messages" method="POST" action="">
-   <textarea id="post" name="name"></textarea>
-</form>
+<main>
+    <section id="result"></section>
+    <form method="POST" action="">
+        <div>
+            <input name="typePost" id="post_id" type="radio" value="post_id" checked><label for="post_id">Id</label>
+            <input name="typePost" id="post_name" type="radio" value="post_name"><label for="post_name">Name</label>
+        </div>
+        <textarea id="post" name="name"></textarea>
+    </form>
+</main>
 <script src="./assets/script/script.js"></script>
 </body>
 </html>

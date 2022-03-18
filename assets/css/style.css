@@ -1,0 +1,32 @@
+body{
+    margin:0;
+    box-sizing: border-box;
+}
+main{
+    height: 95vh;
+    margin: 2vh 2vw;
+}
+section{
+    height: 70vh;
+    width: 50vw;
+    margin: 5vh auto;
+}
+form{
+    width: 50vw;
+    margin: 5vh auto;
+    height: 10vh;
+}
+textarea{
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+    resize:none;
+    font-size: 8vh;
+}
+form div{
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
