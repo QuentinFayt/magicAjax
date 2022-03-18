@@ -26,134 +26,134 @@ class Card
 
 
     /**
-     * @param int $carte_id
+     * @param int $card_id
      *
      * @return Card
      */
-    public function setCardId(int $carte_id) : Card
+    public function setCardId(int $card_id) : Card
     {
-        $this->carte_id = $carte_id;
+        $this->card_id = $card_id;
         return $this;
     }
 
     /**
-     * @param string $carte_name
+     * @param string $card_name
      *
      * @return Card
      */
-    public function setCardName(string $carte_name) : Card
+    public function setCardName(string $card_name) : Card
     {
-        $this->carte_name = $carte_name;
+        $this->card_name = $card_name;
         return $this;
     }
 
     /**
-     * @param string $carte_cost
+     * @param string $card_cost
      *
      * @return Card
      */
-    public function setCardCost(string $carte_cost) : Card
+    public function setCardCost(string $card_cost) : Card
     {
-        $this->carte_cost = $carte_cost;
+        $this->card_cost = $card_cost;
         return $this;
     }
 
     /**
-     * @param string $carte_color
+     * @param string $card_color
      *
      * @return Card
      */
-    public function setCardColor(string $carte_color) : Card
+    public function setCardColor(string $card_color) : Card
     {
-        $this->carte_color = $carte_color;
+        $this->card_color = $card_color;
         return $this;
     }
 
     /**
-     * @param bool $carte_legendary_state
+     * @param bool $card_legendary_state
      *
      * @return Card
      */
-    public function setCardLegendaryState(bool $carte_legendary_state) : Card
+    public function setCardLegendaryState(bool $card_legendary_state) : Card
     {
-        $this->carte_legendary_state = $carte_legendary_state;
+        $this->card_legendary_state = $card_legendary_state;
         return $this;
     }
 
     /**
-     * @param string $carte_type
+     * @param string $card_type
      *
      * @return Card
      */
-    public function setCardType(string $carte_type) : Card
+    public function setCardType(string $card_type) : Card
     {
-        $this->carte_type = $carte_type;
+        $this->card_type = $card_type;
         return $this;
     }
 
     /**
-     * @param string $carte_subtype
+     * @param string $card_subtype
      *
      * @return Card
      */
-    public function setCardSubtype(string $carte_subtype) : Card
+    public function setCardSubtype(string $card_subtype) : Card
     {
-        $this->carte_subtype = $carte_subtype;
+        $this->card_subtype = $card_subtype;
         return $this;
     }
 
     /**
-     * @param string $carte_effect
+     * @param string $card_effect
      *
      * @return Card
      */
-    public function setCardEffect(string $carte_effect) : Card
+    public function setCardEffect(string $card_effect) : Card
     {
-        $this->carte_effect = $carte_effect;
+        $this->card_effect = $card_effect;
         return $this;
     }
 
     /**
-     * @param int $carte_power
+     * @param int $card_power
      *
      * @return Card
      */
-    public function setCardPower(int $carte_power) : Card
+    public function setCardPower(int $card_power) : Card
     {
-        $this->carte_power = $carte_power;
+        $this->card_power = $card_power;
         return $this;
     }
 
     /**
-     * @param int $carte_toughness
+     * @param int $card_toughness
      *
      * @return Card
      */
-    public function setCardToughness(int $carte_toughness) : Card
+    public function setCardToughness(int $card_toughness) : Card
     {
-        $this->carte_toughness = $carte_toughness;
+        $this->card_toughness = $card_toughness;
         return $this;
     }
 
     /**
-     * @param string $carte_rarity
+     * @param string $card_rarity
      *
      * @return Card
      */
-    public function setCardRarity(string $carte_rarity) : Card
+    public function setCardRarity(string $card_rarity) : Card
     {
-        $this->carte_rarity = $carte_rarity;
+        $this->card_rarity = $card_rarity;
         return $this;
     }
 
     /**
-     * @param string $carte_edition
+     * @param string $card_edition
      *
      * @return Card
      */
-    public function setCardEdition(string $carte_edition) : Card
+    public function setCardEdition(string $card_edition) : Card
     {
-        $this->carte_edition = $carte_edition;
+        $this->card_edition = $card_edition;
         return $this;
     }
 
