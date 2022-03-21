@@ -24,6 +24,10 @@ class Card {
         }
     }
 
+    brtxt(text) {
+        return text.replaceAll("\n", "<br/>");
+    }
+
     draw() {
         return `
         <div class="card ${this.cardboard_color}">
@@ -40,7 +44,7 @@ class Card {
                + (this.subType ? `<p>${this.subType}</p>` : "") + `
             </div>
             <div class="text ${this.cardboard_color}">
-                <p>${this.effect}</p>
+                <p>${this.brtxt(this.effect)}</p>
             </div>
             <div class="rarity">
                 <p>${this.rarity}</p>`
