@@ -7,7 +7,7 @@ document.addEventListener("keydown", (event) => {
         let data       = {id, name};
         $("#post").val("");
         if (data.id || data.name.length) {
-            $.post("http://magicajax-php/", data, (el) => {
+            $.get("http://magicajax-php/", data, (el) => {
                 let json = JSON.parse(el);
                 let card = new Card(json.card_name, json.card_cost, json.card_legendary_state, json.card_type, json.card_subtype, json.card_effect, json.card_rarity, json.card_power, json.card_toughness, json.card_color);
                 $("#result").empty().append(card.draw());

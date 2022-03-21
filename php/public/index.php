@@ -12,8 +12,8 @@ $pdo = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';port=' . 
 
 $carteManager = new CardManager(["pdo"=>$pdo]);
 
-if(!empty($_POST["id"])||!empty($_POST["name"])){
-    $post = (int) $_POST["id"]?: (string) $_POST["name"];
+if(!empty($_GET["id"])||!empty($_GET["name"])){
+    $post = (int) $_GET["id"]?: (string) $_GET["name"];
     $tempCard = is_int($post)? $carteManager->getCard(id:$post):$carteManager->getCard(name:$post);
     if(is_array($tempCard)){$newCard = new Card($tempCard);}
 }

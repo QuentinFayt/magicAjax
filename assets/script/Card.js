@@ -25,6 +25,7 @@ class Card {
     }
 
     costDisplay(el) {
+        console.log(el);
         let costs = el.split("_");
         let str   = "";
         costs.forEach((cost) => {

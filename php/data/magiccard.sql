@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 18 mars 2022 à 10:45
+-- Généré le : lun. 21 mars 2022 à 08:27
 -- Version du serveur : 8.0.27
 -- Version de PHP : 8.0.13
 
@@ -52,9 +52,9 @@ CREATE TABLE IF NOT EXISTS `card` (
 --
 
 INSERT INTO `card` (`card_id`, `card_name`, `card_cost`, `card_color`, `card_legendary_state`, `card_type`, `card_subtype`, `card_effect`, `card_power`, `card_toughness`, `card_rarity`, `card_edition`) VALUES
-(1, 'Animar, Soul of Elements', '1Bu1R1G', 'Blue-Red-Green', 1, 'Creature', 'Elemental', 'Protected from white and from black\r\n\r\nWhenever you cast a creature spell, put a +1/+1 counter on Animar, Soul of Elements.\r\n\r\nCreature spells you cast cost 1N less to cast for each +1/+1 counter on Animar.', 1, 1, 'Mythic', 'Master 25'),
-(2, 'Feather, the Redeemed', '1R2W', 'Red-White', 1, 'Creature', 'Angel', 'Flying\r\nWhenever you cast an instant or a sorcery spell that targets a creature you control, exile that card instead of putting it to your graveyard as it resolves. If you do, return it to your hand at the beginning of the next end step.', 3, 4, 'Mythic', 'War of the Spark'),
-(3, 'Atraxa, Praetors\' Voice', '1G1W1Bu1B', 'Green-White-Blue-Black', 1, 'Creature', 'Angel Horror', 'Flying, vigilance, deathtouch, lifelink\r\nAt the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)', 4, 4, 'Mythic', 'Commander Anthology Volume 2'),
+(1, 'Animar, Soul of Elements', '1-Bu_1-R_1-G', 'Blue-Red-Green', 1, 'Creature', 'Elemental', 'Protected from white and from black\r\n\r\nWhenever you cast a creature spell, put a +1/+1 counter on Animar, Soul of Elements.\r\n\r\nCreature spells you cast cost 1N less to cast for each +1/+1 counter on Animar.', 1, 1, 'Mythic', 'Master 25'),
+(2, 'Feather, the Redeemed', '1-R_2-W', 'Red-White', 1, 'Creature', 'Angel', 'Flying\r\nWhenever you cast an instant or a sorcery spell that targets a creature you control, exile that card instead of putting it to your graveyard as it resolves. If you do, return it to your hand at the beginning of the next end step.', 3, 4, 'Mythic', 'War of the Spark'),
+(3, 'Atraxa, Praetors\' Voice', '1-G_1-W_1-Bu_1-B', 'Green-White-Blue-Black', 1, 'Creature', 'Angel Horror', 'Flying, vigilance, deathtouch, lifelink\r\nAt the beginning of your end step, proliferate. (Choose any number of permanents and/or players, then give each another counter of each kind already there.)', 4, 4, 'Mythic', 'Commander Anthology Volume 2'),
 (4, 'Cabal Coffers', '', 'None', 0, 'Land', '', '2N, Tap-it : Add 1 Black for each swamps you control.', 0, 0, 'Mythic', 'Torment'),
 (5, 'Urborg, Tomb of Yawgmoth', '', 'None', 1, 'Land', '', 'Each land is a Swamp in addition to its other land types.', 0, 0, 'Mythic', 'Magic 2015 Core Set');
 SET FOREIGN_KEY_CHECKS=1;
