@@ -24,6 +24,16 @@ class Card {
         }
     }
 
+    costDisplay(el) {
+        let costs = el.split("_");
+        let str   = "";
+        costs.forEach((cost) => {
+            cost = cost.split("-");
+            str += `<img class="ico" src="./assets/images/ico/${cost[1]}.png" alt="ico">`.repeat(cost[0]);
+        });
+        return str;
+    }
+
     brtxt(text) {
         return text.replaceAll("\n", "<br/>");
     }
@@ -33,7 +43,7 @@ class Card {
         <div class="card ${this.cardboard_color}">
             <div class="nom ${this.cardboard_color}">
                 <p>${this.name}</p>
-                <p>${this.cost}</p>
+                <div>${this.costDisplay(this.cost)}</div>
             </div>
             <div class="img">
                <img src="./assets/images/${this.name}.jpg" alt="pic"/>
