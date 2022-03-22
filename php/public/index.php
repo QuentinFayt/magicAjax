@@ -18,4 +18,4 @@ if(!empty($_GET["id"])||!empty($_GET["name"])){
     if(is_array($tempCard)){$newCard = new Card($tempCard);}
 }
 
-echo json_encode($newCard ?? ["error"=>"Result not found"]);
+echo "<pre>".json_encode($newCard ?? ["error"=>"Result not found"])."</pre>";
