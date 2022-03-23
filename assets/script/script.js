@@ -8,8 +8,6 @@ document.addEventListener("keydown", (event) => {
         $("#post").val("");
         if (data.id || data.name.length) {
             $.get("http://magicajax-php/", data, (el) => {
-                el       = el.replace("<pre>", "");
-                el       = el.replace("</pre>", "");
                 let json = JSON.parse(el);
                 if (!json.error) {
                     let card = new Card(json.card_name, json.card_cost, json.card_legendary_state, json.card_type, json.card_subtype, json.card_effect, json.card_rarity, json.card_power, json.card_toughness, json.card_color);

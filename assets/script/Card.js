@@ -35,7 +35,7 @@ class Card {
                 str += `<img class="ico" src="./assets/images/ico/${cost[1]}.png" alt="ico">`.repeat(cost[0]);
             }
             else {
-                str += `<span class="unco">${cost[0]}</span>`
+                str += `<span class="unco">${cost[0]}</span>`;
             }
             if (cost[0] === "Tap") {
                 str += `<img class="ico" src="./assets/images/ico/${cost[0]}.png" alt="ico">`;
