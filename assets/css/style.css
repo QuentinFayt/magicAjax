@@ -124,16 +124,81 @@ section > div div p {
     background-color : #ece8b1;
 }
 
-.nom.bl,
-.type.bl,
-.powtough.bl {
+.nom.black,
+.type.black,
+.powtough.black {
     background-color : #c2bab8;
 }
 
-.text.bl {
+.text.black {
     background-color : #a69e9c;
 }
 
-.card.bl {
+.card.black {
     background-color : #91775e;
+}
+
+.nom.green,
+.type.green,
+.powtough.green,
+.text.green {
+    background-color : #c6d2be;
+}
+
+.card.green {
+    background-color : #549669;
+}
+
+.nom.red,
+.type.red,
+.powtough.red,
+.text.red {
+    background-color : #f4d3c1;
+}
+
+.card.red {
+    background-color : #d85041;
+}
+
+.nom.blue,
+.type.blue,
+.powtough.blue,
+.text.blue {
+    background-color : #e6f2f9;
+}
+
+.card.blue {
+    background-color : #6fcff1;
+}
+
+.nom.white,
+.type.white,
+.powtough.white,
+.text.white {
+    background-color : #f3efe3;
+}
+
+.card.white {
+    background-color : #eae3d6;
+}
+
+.nom.colorless,
+.type.colorless,
+.powtough.colorless,
+.text.colorless {
+    background-color : #d1dbdd;
+}
+
+.card.colorless {
+    background-color : #8697a2;
+}
+
+.unco {
+    display          : inline-block;
+    background-color : #abaca7;
+    border-radius    : 50%;
+    width            : 20px;
+    height           : 20px;
+    text-align       : center;
+    line-height      : 20px;
 }

@@ -12,6 +12,7 @@ class Card {
         this.power          = power;
         this.toughness      = toughness;
         this.color          = color;
+        this.effect         = this.costInEffect(this.effect);
         this.checkColor();
     }
 
@@ -20,23 +21,38 @@ class Card {
             this.cardboard_color = "mul";
         }
         else {
-            this.cardboard_color = "bl";
+            this.cardboard_color = this.color.toLowerCase();
         }
     }
 
     costDisplay(el) {
-        console.log(el);
         let costs = el.split("_");
         let str   = "";
         costs.forEach((cost) => {
             cost = cost.split("-");
-            str += `<img class="ico" src="./assets/images/ico/${cost[1]}.png" alt="ico">`.repeat(cost[0]);
+
+            if (cost[1] !== "N") {
+                str += `<img class="ico" src="./assets/images/ico/${cost[1]}.png" alt="ico">`.repeat(cost[0]);
+            }
+            else {
+                str += `<span class="unco">${cost[0]}</span>`
+            }
+            if (cost[0] === "Tap") {
+                str += `<img class="ico" src="./assets/images/ico/${cost[0]}.png" alt="ico">`;
+            }
         });
         return str;
     }
 
     brtxt(text) {
         return text.replaceAll("\n", "<br/>");
+    }
+
+    costInEffect(text) {
+        [...text.matchAll(/(?<=-_)(.*?)(?=_-)/g)].forEach(match => {
+            text = text.replaceAll(`-_${match[0].toString()}_-`, this.costDisplay(match[0].toString()));
+        });
+        return text;
     }
 
     draw() {
