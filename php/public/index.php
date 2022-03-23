@@ -17,11 +17,10 @@ if (isset($pdo)) {
     $carteManager = new CardManager(["pdo" => $pdo]);
 
     if (!empty($_GET["id"]) || !empty($_GET["name"])) {
-        $post = $_GET["id"] ?? (string) $_GET["name"];
-        if (isset($post)) {
-            $tempCard = is_int($post) ? $carteManager->getCard(id: (int) $post) : $carteManager->getCard(name: $post);
-        }
-        if (isset($tempCard) && is_array($tempCard)) {
+        $post     = $_GET["id"] ?? (string) $_GET["name"];
+        $tempCard = ctype_digit($post) ? $carteManager->getCard(id: (int) $post) : $carteManager->getCard(name: $post);
+
+        if (is_array($tempCard)) {
             $newCard = new Card($tempCard);
         }
     }

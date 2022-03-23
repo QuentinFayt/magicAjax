@@ -1,12 +1,20 @@
+window.addEventListener("load", () => {
+    $("#post").focus();
+})
 document.addEventListener("keydown", (event) => {
     let key = event.key;
     if (key === "Enter") {
         event.preventDefault();
-        let postValue  = document.querySelector("#post").value;
-        let [id, name] = $("#post_id").is(":checked") ? [parseInt(postValue), ""] : [null, postValue];
-        let data       = {id, name};
+        let postValue = document.querySelector("#post").value;
+        let data      = {};
+        if ($("#post_id").is(":checked")) {
+            data["id"] = parseInt(postValue);
+        }
+        else {
+            data["name"] = postValue;
+        }
         $("#post").val("");
-        if (data.id || data.name.length) {
+        if (data.id || (data.name && data.name.length && data.name.match(/^[0-9]+$/) === null)) {
             $.get("http://magicajax-php/", data, (el) => {
                 let json = JSON.parse(el);
                 if (!json.error) {

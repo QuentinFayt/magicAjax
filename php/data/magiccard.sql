@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 23 mars 2022 à 11:50
+-- Généré le : mer. 23 mars 2022 à 16:58
 -- Version du serveur : 8.0.27
 -- Version de PHP : 8.0.13
 
@@ -58,7 +58,7 @@ INSERT INTO `card` (`card_id`, `card_name`, `card_cost`, `card_color`, `card_leg
 (4, 'Cabal Coffers', '', 'Black', 0, 'Land', '', '-_2-N_-, -_Tap_- : Add -_1-B_- for each swamps you control.', 0, 0, 'Mythic', 'Torment'),
 (5, 'Urborg, Tomb of Yawgmoth', '', 'Black', 1, 'Land', '', 'Each land is a Swamp in addition to its other land types.', 0, 0, 'Mythic', 'Magic 2015 Core Set'),
 (6, 'Zendikar Resurgent', '5-N_2-G', 'Green', 0, 'Enchantment', '', 'Whenever you tap a land for mana, add one mana of any type that land produced. \n(The types of mana are white, blue, black, red, green, and colorless.)\nWhenever you cast a creature spell, draw a card.', 0, 0, 'Rare', 'Oath of the Gatewatch'),
-(7, 'Electrodominance', 'X-N_2-R', 'Red', 0, 'Instant', '', 'Electrodominance deals -_X_- damage to any target. You may cast a spell with mana value -_X_- or less from your hand without paying its mana cost.', 0, 0, 'Rare', 'Ravnica Allegiance'),
+(7, 'Electrodominance', 'X-N_2-R', 'Red', 0, 'Instant', '', 'Electrodominance deals -_X-N_- damage to any target. You may cast a spell with mana value -_X-N_- or less from your hand without paying its mana cost.', 0, 0, 'Rare', 'Ravnica Allegiance'),
 (8, 'Omniscience', '7-N_3-Bu', 'Blue', 0, 'Enchantment', '', 'You may cast spells from your hand without paying their mana costs.', 0, 0, 'Mythic', 'Core Set 2019'),
 (9, 'Steelshaper\'s Gift', '1-W', 'White', 0, 'Sorcery', '', 'Search your library for an Equipment card, reveal that card, put it into your hand, then shuffle.', 0, 0, 'Uncommon', 'Fifth Dawn'),
 (10, 'Sword of Feast and Famine', '3-N', 'ColorLess', 0, 'Artifact', 'Equipment', 'Equipped creature gets +2/+2 and has protection from black and from green.\nWhenever equipped creature deals combat damage to a player, that player discards a card and you untap all lands you control.\nEquip -_2-N_-', 0, 0, 'Mythic', 'Mirrodin Besieged');
