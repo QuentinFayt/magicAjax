@@ -41,9 +41,11 @@ document.addEventListener("keydown", (event) => {
     if (key === "g" && !$("#post").is(":focus")) {
         $("#getAll").css("display", "none");
         $("#getOne").css("display", "block");
-        $("#post").focus();
         setTimeout(() => {
-            $("#post").val("");
+            $("#post").focus();
+            setTimeout(() => {
+                $("#post").val("");
+            }, 1)
         }, 1)
     }
     if (key === "a" && !$("#post").is(":focus")) {
@@ -54,6 +56,18 @@ document.addEventListener("keydown", (event) => {
     if ($("#post_All").is(":focus") && key === "Enter") {
         event.preventDefault();
         getAllCards();
+    }
+    if ($("#getAll").css("display") === "flex" && (key === "ArrowDown" || key === "ArrowUp")) {
+        let scrollWindow = document.querySelector("#result");
+        let pos          = scrollWindow.scrollTop;
+        if (key === "ArrowDown") {
+            pos += 560;
+            scrollWindow.scroll(0, pos)
+        }
+        if (key === "ArrowUp") {
+            pos -= 560;
+            scrollWindow.scroll(0, pos)
+        }
     }
 });
 $("#post_All").click((event) => {
