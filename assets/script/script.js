@@ -39,10 +39,16 @@ document.addEventListener("keydown", (event) => {
         $("#post").focus();
     }
     if (key === "Escape") {
-        $("#post").blur();
+        $(".writing").each((e, o) => {
+            if (o === document.activeElement) {
+                o.blur();
+            }
+        });
     }
-    if (key === "g" && !$("#post").is(":focus")) {
+    if (key === "g" && !$(".writing").is(":focus")) {
         $("#getAll").css("display", "none");
+        $("#postOne").css("display", "none");
+        $("#result").css("display", "flex");
         $("#getOne").css("display", "block");
         setTimeout(() => {
             $("#post").focus();
@@ -51,10 +57,18 @@ document.addEventListener("keydown", (event) => {
             }, 1)
         }, 1)
     }
-    if (key === "a" && !$("#post").is(":focus")) {
+    if (key === "a" && !$(".writing").is(":focus")) {
         $("#getOne").css("display", "none");
+        $("#postOne").css("display", "none");
+        $("#result").css("display", "flex");
         $("#getAll").css("display", "flex");
         $("#post_All").focus();
+    }
+    if (key === "p" && !$(".writing").is(":focus")) {
+        $("#getOne").css("display", "none");
+        $("#getAll").css("display", "none");
+        $("#result").css("display", "none");
+        $("#postOne").css("display", "flex");
     }
     if ($("#post_All").is(":focus") && key === "Enter") {
         event.preventDefault();
@@ -70,6 +84,21 @@ document.addEventListener("keydown", (event) => {
         if (key === "ArrowUp") {
             pos -= 560;
             scrollWindow.scroll(0, pos)
+        }
+    }
+    if ($(".postOne").css("display") === "flex" && key === "Enter") {
+        event.preventDefault();
+        let data = {
+            card_name           : "",
+            card_cost           : "",
+            card_legendary_state: "",
+            card_type           : "",
+            card_subtype        : "",
+            card_effect         : "",
+            card_power          : "",
+            card_toughness      : "",
+            card_rarity         : "",
+            card_edition        : "",
         }
     }
 });

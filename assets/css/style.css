@@ -19,7 +19,7 @@ form {
     height : 10vh;
 }
 
-textarea {
+#getOne textarea {
     display   : block;
     width     : 90%;
     margin    : 0 auto;
@@ -28,7 +28,7 @@ textarea {
     font-size : 8vh;
 }
 
-form div {
+.getOne div {
     display    : block;
     width      : 90%;
     margin     : 0 auto;
@@ -256,5 +256,65 @@ section > div div p {
 }
 
 .postOne {
-    display : none;
+    display        : none;
+    flex-direction : column;
+    gap            : 1em;
+    height         : fit-content;
+    width          : 30%;
+}
+
+.postOne > div {
+    display        : flex;
+    flex-direction : column;
+    gap            : 1em;
+}
+
+.postOne .legendary {
+    display : block;
+    margin  : 0 auto;
+}
+
+.postOne .cost {
+    display : block;
+}
+
+.postOne .cost fieldset {
+    display               : grid;
+    grid-template-columns : 1fr 1fr 1fr;
+}
+
+.postOne .powtoughPost {
+    display : block;
+}
+
+.postOne .powtoughPost fieldset {
+    display : flex;
+    gap     : 1em;
+    width   : fit-content;
+    margin  : 0 auto;
+}
+
+.postOne .cost fieldset label {
+    width   : 55px;
+    display : inline-block;
+}
+
+.postOne .powtoughPost fieldset label {
+    width   : 70px;
+    display : inline-block;
+}
+
+.postOne .powtoughPost fieldset div {
+    width : fit-content;
+}
+
+.postOne .cost fieldset input,
+.postOne .powtoughPost fieldset input {
+    width   : 2em;
+    display : inline-block;
+}
+
+.effect {
+    height : 100px;
+    resize : none;
 }

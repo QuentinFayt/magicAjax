@@ -12,17 +12,19 @@
  <pre>╔═════════════════════════════════════════════════╗
 ║ <span>Inputs:</span>                                         ║
 ╠══════════╦══════════════════════════════════════╣
-║    A     ║ Switch to get All cards              ║
+║    A     ║ Switch to get all cards              ║
 ╠══════════╬══════════════════════════════════════╣
-║    G     ║ Switch to get One card by id or Name ║
+║    G     ║ Switch to get one card by id or name ║
+╠══════════╬══════════════════════════════════════╣
+║    P     ║ Switch to post one card              ║
 ╠══════════╬══════════════════════════════════════╣
 ║   Enter  ║ Validate current form                ║
 ╠══════════╬══════════════════════════════════════╣
 ║  Escape  ║ Unfocus textarea                     ║
 ╠══════════╬══════════════════════════════════════╣
-║  ← ou →  ║ Switch to id ou name                 ║
+║  ← or →  ║ Switch to id or name                 ║
 ╠══════════╬══════════════════════════════════════╣
-║  ↑ ou ↓  ║ Scroll to next cards                 ║
+║  ↑ or ↓  ║ Scroll to next cards                 ║
 ╚══════════╩══════════════════════════════════════╝</pre>
 </div>
 <main>
@@ -35,14 +37,111 @@
             <input checked id="post_id" name="typePost" type="radio" value="post_id"><label for="post_id">Id</label>
             <input id="post_name" name="typePost" type="radio" value="post_name"><label for="post_name">Name</label>
         </div>
-        <textarea id="post" name="name"></textarea>
+        <textarea class="writing" id="post" name="name"></textarea>
     </form>
     <form action="" class="getAll" id="getAll" method="POST">
         <label for="post_All">Récupérer toute les cartes?</label>
         <input id="post_All" type="submit" value="yes">
     </form>
     <form action="" class="postOne" id="postOne" method="POST">
+        <div>
+            <label for="card_name">Nom:</label>
+            <input class="writing" id="card_name" name="card_name" type="text"/>
+        </div>
+        <div>
+            <label>Artwork:</label>
+            <input type="file"/>
+        </div>
+        <div class="cost">
+            <fieldset>
+                <legend>Coût:</legend>
+                <div>
+                    <label for="inCo">Incolore</label>
+                    <input id="inCo" name="cost" type="number" value="0">
+                </div>
+                <div>
+                    <label for="white">Blanc</label>
+                    <input id="white" name="cost" type="number" value="0">
+                </div>
+                <div>
+                    <label for="blue">Bleu</label>
+                    <input id="blue" name="cost" type="number" value="0">
+                </div>
+                <div>
+                    <label for="black">Noir</label>
+                    <input id="black" name="cost" type="number" value="0">
+                </div>
+                <div>
+                    <label for="green">Vert</label>
+                    <input id="green" name="cost" type="number" value="0">
+                </div>
+                <div>
+                    <label for="red">Rouge</label>
+                    <input id="red" name="cost" type="number" value="0">
+                </div>
+            </fieldset>
+        </div>
+        <div class="legendary">
+            <label>légendaire:</label>
+            <input checked name="legendaryStatePost" type="radio" value="false"><label for="post_id">Non</label>
+            <input name="legendaryStatePost" type="radio" value="true"><label for="post_name">Oui</label>
+        </div>
+        <div>
 
+            <label>Type</label>
+            <select>
+                <option disabled selected>--Choisissez un type--</option>
+                <option>Terrain</option>
+                <option>Créature</option>
+                <option>Enchantement</option>
+                <option>Artéfact</option>
+                <option>Planeswalker</option>
+                <option>Instant</option>
+                <option>Sortilège</option>
+            </select>
+        </div>
+        <div>
+            <label for="subtype">Sous-Type</label>
+            <input class="writing" id="subtype" type="text"/>
+        </div>
+        <div>
+            <label>Couleur</label>
+            <select>
+                <option disabled selected>--Choisissez une couleur--</option>
+                <option>Incolore</option>
+                <option>Blanc</option>
+                <option>Bleu</option>
+                <option>Noir</option>
+                <option>Rouge</option>
+                <option>Vert</option>
+                <option>Multicolore</option>
+            </select>
+        </div>
+        <div>
+            <label for="effect">Effet</label>
+            <textarea class="effect writing" id="effect" placeholder="Chaque coût doit suivre ce format:-_montant-couleur_-&#10;Exemple:-&#10;-_X-N_- => X incolore &#10;-_Tap_- => Pour le tap &#10;-_0-B_- => 0 noir &#10;Couleur : B noir, R rouge, W blanc, Bu bleu, G green, N incolore"></textarea>
+        </div>
+        <div class="powtoughPost">
+            <fieldset>
+                <legend>Force/Endurance</legend>
+                <div>
+                    <label for="strength">Force</label>
+                    <input id="strength" type="number" value="0"/>
+                </div>
+                <div>
+                    <label for="toughness">Endurance</label>
+                    <input id="toughness" type="number" value="0"/>
+                </div>
+            </fieldset>
+        </div>
+        <div>
+            <label for="rarity">Rareté</label>
+            <input class="writing" id="rarity" type="text"/>
+        </div>
+        <div>
+            <label for="edition">Edition</label>
+            <input class="writing" id="edition" type="text"/>
+        </div>
     </form>
 </main>
 <script src="./assets/script/Card.js"></script>
