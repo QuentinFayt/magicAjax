@@ -14,16 +14,19 @@ try {
     echo $e->getMessage();
 }
 if (isset($pdo)) {
-    $carteManager = new CardManager(["pdo" => $pdo]);
+    $cardManager = new CardManager(["pdo" => $pdo]);
 
     if (!empty($_GET["id"]) || !empty($_GET["name"])) {
+
         $post     = $_GET["id"] ?? (string) $_GET["name"];
-        $tempCard = ctype_digit($post) ? $carteManager->getCard(id: (int) $post) : $carteManager->getCard(name: $post);
+        $tempCard = ctype_digit($post) ? $cardManager->getCard(id: (int) $post) : $cardManager->getCard(name: $post);
 
         if (is_array($tempCard)) {
             $newCard = new Card($tempCard);
         }
+        echo json_encode($newCard ?? ["error" => "Result not found"]);
     }
-
-    echo json_encode($newCard ?? ["error" => "Result not found"]);
+    elseif (isset($_GET["all"])) {
+        echo json_encode($cardManager->getAllCards());
+    }
 }

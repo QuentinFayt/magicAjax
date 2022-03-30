@@ -3,7 +3,7 @@ window.addEventListener("load", () => {
 })
 document.addEventListener("keydown", (event) => {
     let key = event.key;
-    if (key === "Enter") {
+    if (key === "Enter" && $("#post").is(":focus")) {
         event.preventDefault();
         let postValue = document.querySelector("#post").value;
         let data      = {};
@@ -33,5 +33,15 @@ document.addEventListener("keydown", (event) => {
         $("#post_id").prop("checked", !(check));
         $("#post_name").prop("checked", check);
         $("#post").focus();
+    }
+    if (key === "Escape") {
+        $("#post").blur();
+    }
+    if (key === "g" && !$("#post").is(":focus")) {
+        $("#post").focus();
+        $("#post").val("");
+    }
+    if (key === "a" && !$("#post").is(":focus")) {
+        console.log("coucou");
     }
 });
