@@ -4,7 +4,6 @@ body {
 }
 
 main {
-    height : 95vh;
     margin : 2vh 2vw;
 }
 
@@ -57,7 +56,9 @@ section > div div p {
     margin : auto 0;
 }
 
-.nom, .type, .rarity {
+.nom,
+.type,
+.rarity {
     display : flex;
     gap     : 1em;
 }
@@ -66,7 +67,9 @@ section > div div p {
     border-radius : 10px;
 }
 
-.nom, .img, .text {
+.nom,
+.img,
+.text {
     border        : 1px solid black;
     border-radius : 5px;
 }
@@ -79,7 +82,8 @@ section > div div p {
     height : 150px;
 }
 
-.nom p:first-child, .rarity p:first-child {
+.nom p:first-child,
+.rarity p:first-child {
     flex-grow : 3;
 }
 
@@ -108,6 +112,19 @@ section > div div p {
     border-radius : 5px;
     gap           : 1vw;
     padding       : 0 1vw;
+}
+
+.result {
+    display   : flex;
+    flex-wrap : wrap;
+}
+
+.inputs {
+    position : absolute;
+}
+
+.inputs pre span {
+    text-decoration : underline;
 }
 
 .nom.mul,
@@ -201,4 +218,22 @@ section > div div p {
     height           : 20px;
     text-align       : center;
     line-height      : 20px;
+}
+
+.getAll {
+    display        : none;
+    flex-direction : column;
+    text-align     : center;
+    gap            : 1em;
+}
+
+.getAll label {
+    font-size       : 2em;
+    text-decoration : underline;
+}
+
+.getAll input {
+    width     : 50%;
+    margin    : 0 auto;
+    font-size : 2em;
 }

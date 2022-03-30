@@ -5,6 +5,7 @@ document.addEventListener("keydown", (event) => {
     let key = event.key;
     if (key === "Enter" && $("#post").is(":focus")) {
         event.preventDefault();
+        $("#result").css("overflow-y", "auto");
         let postValue = document.querySelector("#post").value;
         let data      = {};
         if ($("#post_id").is(":checked")) {
@@ -28,7 +29,7 @@ document.addEventListener("keydown", (event) => {
         }
         $("#post").focus();
     }
-    if (key === "ArrowLeft" || key === "ArrowRight") {
+    if ($("#getOne").css("display") === "block" && (key === "ArrowLeft" || key === "ArrowRight")) {
         let check = $("#post_id").is(":checked");
         $("#post_id").prop("checked", !(check));
         $("#post_name").prop("checked", check);
@@ -38,10 +39,43 @@ document.addEventListener("keydown", (event) => {
         $("#post").blur();
     }
     if (key === "g" && !$("#post").is(":focus")) {
+        $("#getAll").css("display", "none");
+        $("#getOne").css("display", "block");
         $("#post").focus();
-        $("#post").val("");
+        setTimeout(() => {
+            $("#post").val("");
+        }, 1)
     }
     if (key === "a" && !$("#post").is(":focus")) {
-        console.log("coucou");
+        $("#getOne").css("display", "none");
+        $("#getAll").css("display", "flex");
+        $("#post_All").focus();
+    }
+    if ($("#post_All").is(":focus") && key === "Enter") {
+        event.preventDefault();
+        getAllCards();
     }
 });
+$("#post_All").click((event) => {
+    event.preventDefault();
+    let data = {"all": true};
+    $.get("http://magicajax-php/", data, (el) => {
+        let json = JSON.parse(el);
+        getAllCards();
+    });
+})
+
+function getAllCards() {
+    $("#result").css("overflow-y", "scroll");
+    let data = {"all": true};
+    $.get("http://magicajax-php/", data, (el) => {
+        let json = JSON.parse(el);
+        if (!json.error) {
+            $("#result").empty();
+            json.forEach(cardObject => {
+                let card = new Card(cardObject.card_name, cardObject.card_cost, cardObject.card_legendary_state, cardObject.card_type, cardObject.card_subtype, cardObject.card_effect, cardObject.card_rarity, cardObject.card_power, cardObject.card_toughness, cardObject.card_color);
+                $("#result").append(card.draw());
+            });
+        }
+    });
+}

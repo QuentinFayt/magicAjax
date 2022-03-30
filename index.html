@@ -3,20 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Magic Ajax</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./assets/css/style.css"/>
+    <script crossorigin="anonymous" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="./assets/css/style.css" rel="stylesheet"/>
 </head>
 <body>
+<div class="inputs">
+        <pre>
+            <span>Inputs:</span>
+
+            • A : Switch to get All cards
+            • G : Switch to get One card by id or Name
+            • Enter : Validate current form
+            • Escape : Unfocus textarea
+            • ← || → : Switch to id || name
+        </pre>
+</div>
 <main>
-    <section id="result">
+
+    <section class="result" id="result">
 
     </section>
-    <form method="POST" action="">
+    <form action="" class="getOne" id="getOne" method="POST">
         <div>
-            <input name="typePost" id="post_id" type="radio" value="post_id" checked><label for="post_id">Id</label>
-            <input name="typePost" id="post_name" type="radio" value="post_name"><label for="post_name">Name</label>
+            <input checked id="post_id" name="typePost" type="radio" value="post_id"><label for="post_id">Id</label>
+            <input id="post_name" name="typePost" type="radio" value="post_name"><label for="post_name">Name</label>
         </div>
         <textarea id="post" name="name"></textarea>
+    </form>
+    <form action="" class="getAll" id="getAll" method="POST">
+        <label for="post_All">Récupérer toute les cartes?</label>
+        <input id="post_All" type="submit" value="yes">
+    </form>
+    <form action="" class="postOne" id="postOne" method="POST">
+
     </form>
 </main>
 <script src="./assets/script/Card.js"></script>
