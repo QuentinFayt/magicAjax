@@ -338,3 +338,9 @@ section > div div p {
 .postOne p {
     font-style : italic;
 }
+
+.postOne .color,
+.postOne .powtoughPost,
+.postOne .cost {
+    display : none;
+}

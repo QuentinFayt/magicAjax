@@ -177,3 +177,5 @@ function getAllCards() {
         }
     });
 }
+
+$(".postOne select[id:'type']")
