@@ -88,6 +88,19 @@ document.addEventListener("keydown", (event) => {
     }
     if ($(".postOne").css("display") === "flex" && key === "Enter") {
         event.preventDefault();
+        if ($("#card_name").val() !== "" &&
+            ($("#legendaryStatePostTrue").is(":checked") ||
+             $("#legendaryStatePostFalse").is(":checked")) &&
+            $("#type") &&
+            $("#subtype").val() !== "" &&
+            $("#effect").val() !== "" &&
+            $("#rarity") &&
+            $("#edition") !== "") {
+            let colors = [];
+            $("input[name='color']:checked").serializeArray().forEach((el) => {
+                colors.push(el.value);
+            })
+        }
         let data = {
             card_name           : "",
             card_cost           : "",

@@ -83,21 +83,21 @@
         </div>
         <div class="legendary">
             <label>légendaire:</label>
-            <input checked name="legendaryStatePost" type="radio" value="false"><label for="post_id">Non</label>
-            <input name="legendaryStatePost" type="radio" value="true"><label for="post_name">Oui</label>
+            <input checked id="legendaryStatePostFalse" name="legendaryStatePost" type="radio"><label for="legendaryStatePostFalse">Non</label>
+            <input id="legendaryStatePostTrue" name="legendaryStatePost" type="radio"><label for="legendaryStatePostTrue">Oui</label>
         </div>
         <div>
 
             <label>Type</label>
-            <select>
+            <select id="type">
                 <option disabled selected>--Choisissez un type--</option>
-                <option>Terrain</option>
-                <option>Créature</option>
-                <option>Enchantement</option>
-                <option>Artéfact</option>
-                <option>Planeswalker</option>
-                <option>Instant</option>
-                <option>Sortilège</option>
+                <option value="Land">Terrain</option>
+                <option value="Creature">Créature</option>
+                <option value="Enchantement">Enchantement</option>
+                <option value="Artifact">Artéfact</option>
+                <option value="Planeswalker">Planeswalker</option>
+                <option value="Instant">Instant</option>
+                <option value="Sorcery">Sortilège</option>
             </select>
         </div>
         <div>
@@ -105,17 +105,29 @@
             <input class="writing" id="subtype" type="text"/>
         </div>
         <div>
-            <label>Couleur</label>
-            <select>
-                <option disabled selected>--Choisissez une couleur--</option>
-                <option>Incolore</option>
-                <option>Blanc</option>
-                <option>Bleu</option>
-                <option>Noir</option>
-                <option>Rouge</option>
-                <option>Vert</option>
-                <option>Multicolore</option>
-            </select>
+            <fieldset>
+                <legend>Couleur</legend>
+                <div>
+                    <label for="white">Blanc</label>
+                    <input id="white" name="color" type="checkbox" value="white"/>
+                </div>
+                <div>
+                    <label for="blue">Bleu</label>
+                    <input id="blue" name="color" type="checkbox" value="blue"/>
+                </div>
+                <div>
+                    <label for="black">Noir</label>
+                    <input id="black" name="color" type="checkbox" value="black"/>
+                </div>
+                <div>
+                    <label for="red">Rouge</label>
+                    <input id="red" name="color" type="checkbox" value="red"/>
+                </div>
+                <div>
+                    <label for="green">Vert</label>
+                    <input id="green" name="color" type="checkbox" value="green"/>
+                </div>
+            </fieldset>
         </div>
         <div>
             <label for="effect">Effet</label>
@@ -136,7 +148,13 @@
         </div>
         <div>
             <label for="rarity">Rareté</label>
-            <input class="writing" id="rarity" type="text"/>
+            <select id="rarity">
+                <option disabled selected>--Choisissez une rareté--</option>
+                <option value="Common">Commune</option>
+                <option value="Uncommon">Incommune</option>
+                <option value="Rare">Rare</option>
+                <option value="Mythic">Mythique</option>
+            </select>
         </div>
         <div>
             <label for="edition">Edition</label>
