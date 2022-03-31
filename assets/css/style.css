@@ -258,7 +258,7 @@ section > div div p {
 .postOne {
     display        : none;
     flex-direction : column;
-    gap            : 1em;
+    gap            : 0.5em;
     height         : fit-content;
     width          : 30%;
 }
@@ -266,7 +266,7 @@ section > div div p {
 .postOne > div {
     display        : flex;
     flex-direction : column;
-    gap            : 1em;
+    gap            : 0.5em;
 }
 
 .postOne .legendary {
@@ -279,8 +279,15 @@ section > div div p {
 }
 
 .postOne .cost fieldset {
-    display               : grid;
-    grid-template-columns : 1fr 1fr 1fr;
+    display         : flex;
+    flex-wrap       : wrap;
+    justify-content : center;
+    align-items     : center;
+    gap             : 0.1em;
+}
+
+.postOne .cost fieldset div {
+    width : 33%;
 }
 
 .postOne .powtoughPost {
@@ -317,4 +324,17 @@ section > div div p {
 .effect {
     height : 100px;
     resize : none;
+}
+
+.postOne .color fieldset {
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    width           : fit-content;
+    margin          : 0 auto;
+    gap             : 1em;
+}
+
+.postOne p {
+    font-style : italic;
 }

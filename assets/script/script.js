@@ -92,26 +92,65 @@ document.addEventListener("keydown", (event) => {
             ($("#legendaryStatePostTrue").is(":checked") ||
              $("#legendaryStatePostFalse").is(":checked")) &&
             $("#type") &&
-            $("#subtype").val() !== "" &&
             $("#effect").val() !== "" &&
             $("#rarity") &&
             $("#edition") !== "") {
+            let cost   = {
+                W : parseInt($("input[name='cost'][id='whiteCost']").val(), 10),
+                Bu: parseInt($("input[name='cost'][id='blueCost']").val(), 10),
+                B : parseInt($("input[name='cost'][id='blackCost']").val(), 10),
+                R : parseInt($("input[name='cost'][id='redCost']").val(), 10),
+                G : parseInt($("input[name='cost'][id='greenCost']").val(), 10),
+                N : parseInt($("input[name='cost'][id='inCoCost']").val(), 10),
+            };
             let colors = [];
-            $("input[name='color']:checked").serializeArray().forEach((el) => {
-                colors.push(el.value);
-            })
+            if (cost.W > 0 || cost.Bu > 0 || cost.B > 0 || cost.R > 0 || cost.G > 0) {
+                for (let [color, amount] of Object.entries(cost)) {
+                    if (amount) {
+                        let colorName = "";
+                        switch (color) {
+                            case "W":
+                                colorName = "White";
+                                break;
+                            case "Bu":
+                                colorName = "Blue";
+                                break;
+                            case "B":
+                                colorName = "Black";
+                                break;
+                            case "R":
+                                colorName = "Red";
+                                break;
+                            case "G":
+                                colorName = "Green";
+                                break;
+                        }
+                        colors.push(colorName);
+                    }
+                }
+            }
+            else {
+                $("input[name='color']:checked").serializeArray().forEach((el) => {
+                    colors.push(el.value);
+                })
+            }
+            let card = {
+                card_name           : $("#card_name").val(),
+                card_cost           : `${cost.W ? cost.W + "-W_" : ""}${cost.Bu ? cost.Bu + "-Bu_" : ""}${cost.B ? cost.B + "-B_" : ""}${cost.R ? cost.R + "-R_" : ""}${cost.G ? cost.G + "-G_" : ""}${cost.N ? cost.N + "-N_" : ""}`.slice(0, -1),
+                card_legendary_state: $("#legendaryStatePostTrue").is(":checked"),
+                card_type           : $("#type").val(),
+                card_subtype        : $("#subtype").val(),
+                card_color          : colors.length ? colors.join("-") : "ColorLess",
+                card_effect         : $("#effect").val(),
+                card_power          : $("#power").val(),
+                card_toughness      : $("#toughness").val(),
+                card_rarity         : $("#rarity").val(),
+                card_edition        : $("#edition").val(),
+            }
+            console.log(card);
         }
-        let data = {
-            card_name           : "",
-            card_cost           : "",
-            card_legendary_state: "",
-            card_type           : "",
-            card_subtype        : "",
-            card_effect         : "",
-            card_power          : "",
-            card_toughness      : "",
-            card_rarity         : "",
-            card_edition        : "",
+        else {
+            alert("Un des champs obligatoire n'est pas rempli!");
         }
     }
 });

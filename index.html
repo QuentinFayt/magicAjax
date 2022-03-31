@@ -45,7 +45,7 @@
     </form>
     <form action="" class="postOne" id="postOne" method="POST">
         <div>
-            <label for="card_name">Nom:</label>
+            <label for="card_name">Nom(*):</label>
             <input class="writing" id="card_name" name="card_name" type="text"/>
         </div>
         <div>
@@ -56,28 +56,28 @@
             <fieldset>
                 <legend>Coût:</legend>
                 <div>
-                    <label for="inCo">Incolore</label>
-                    <input id="inCo" name="cost" type="number" value="0">
+                    <label for="inCoCost">Incolore</label>
+                    <input id="inCoCost" min="0" name="cost" step="1" type="number">
                 </div>
                 <div>
-                    <label for="white">Blanc</label>
-                    <input id="white" name="cost" type="number" value="0">
+                    <label for="whiteCost">Blanc</label>
+                    <input id="whiteCost" min="0" name="cost" step="1" type="number">
                 </div>
                 <div>
-                    <label for="blue">Bleu</label>
-                    <input id="blue" name="cost" type="number" value="0">
+                    <label for="blueCost">Bleu</label>
+                    <input id="blueCost" min="0" name="cost" step="1" type="number">
                 </div>
                 <div>
-                    <label for="black">Noir</label>
-                    <input id="black" name="cost" type="number" value="0">
+                    <label for="blackCost">Noir</label>
+                    <input id="blackCost" min="0" name="cost" step="1" type="number">
                 </div>
                 <div>
-                    <label for="green">Vert</label>
-                    <input id="green" name="cost" type="number" value="0">
+                    <label for="redCost">Rouge</label>
+                    <input id="redCost" min="0" name="cost" step="1" type="number">
                 </div>
                 <div>
-                    <label for="red">Rouge</label>
-                    <input id="red" name="cost" type="number" value="0">
+                    <label for="greenCost">Vert</label>
+                    <input id="greenCost" min="0" name="cost" step="1" type="number">
                 </div>
             </fieldset>
         </div>
@@ -88,7 +88,7 @@
         </div>
         <div>
 
-            <label>Type</label>
+            <label>Type(*):</label>
             <select id="type">
                 <option disabled selected>--Choisissez un type--</option>
                 <option value="Land">Terrain</option>
@@ -104,50 +104,50 @@
             <label for="subtype">Sous-Type</label>
             <input class="writing" id="subtype" type="text"/>
         </div>
-        <div>
+        <div class="color">
             <fieldset>
                 <legend>Couleur</legend>
                 <div>
-                    <label for="white">Blanc</label>
-                    <input id="white" name="color" type="checkbox" value="white"/>
+                    <label for="WhiteCol">Blanc</label>
+                    <input id="WhiteCol" name="color" type="checkbox" value="White"/>
                 </div>
                 <div>
-                    <label for="blue">Bleu</label>
-                    <input id="blue" name="color" type="checkbox" value="blue"/>
+                    <label for="BlueCol">Bleu</label>
+                    <input id="BlueCol" name="color" type="checkbox" value="Blue"/>
                 </div>
                 <div>
-                    <label for="black">Noir</label>
-                    <input id="black" name="color" type="checkbox" value="black"/>
+                    <label for="BlackCol">Noir</label>
+                    <input id="BlackCol" name="color" type="checkbox" value="Black"/>
                 </div>
                 <div>
-                    <label for="red">Rouge</label>
-                    <input id="red" name="color" type="checkbox" value="red"/>
+                    <label for="RedCol">Rouge</label>
+                    <input id="RedCol" name="color" type="checkbox" value="Red"/>
                 </div>
                 <div>
-                    <label for="green">Vert</label>
-                    <input id="green" name="color" type="checkbox" value="green"/>
+                    <label for="GreenCol">Vert</label>
+                    <input id="GreenCol" name="color" type="checkbox" value="Green"/>
                 </div>
             </fieldset>
         </div>
         <div>
-            <label for="effect">Effet</label>
+            <label for="effect">Effet(*):</label>
             <textarea class="effect writing" id="effect" placeholder="Chaque coût doit suivre ce format:-_montant-couleur_-&#10;Exemple:-&#10;-_X-N_- => X incolore &#10;-_Tap_- => Pour le tap &#10;-_0-B_- => 0 noir &#10;Couleur : B noir, R rouge, W blanc, Bu bleu, G green, N incolore"></textarea>
         </div>
         <div class="powtoughPost">
             <fieldset>
                 <legend>Force/Endurance</legend>
                 <div>
-                    <label for="strength">Force</label>
-                    <input id="strength" type="number" value="0"/>
+                    <label for="power">Force</label>
+                    <input id="power" min="0" step="1" type="number" value=""/>
                 </div>
                 <div>
                     <label for="toughness">Endurance</label>
-                    <input id="toughness" type="number" value="0"/>
+                    <input id="toughness" min="0" step="1" type="number" value=""/>
                 </div>
             </fieldset>
         </div>
         <div>
-            <label for="rarity">Rareté</label>
+            <label for="rarity">Rareté(*):</label>
             <select id="rarity">
                 <option disabled selected>--Choisissez une rareté--</option>
                 <option value="Common">Commune</option>
@@ -157,9 +157,10 @@
             </select>
         </div>
         <div>
-            <label for="edition">Edition</label>
+            <label for="edition">Edition(*):</label>
             <input class="writing" id="edition" type="text"/>
         </div>
+        <p>(*) : Champs obligatoires</p>
     </form>
 </main>
 <script src="./assets/script/Card.js"></script>
