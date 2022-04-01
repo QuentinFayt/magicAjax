@@ -134,7 +134,7 @@ document.addEventListener("keydown", (event) => {
                     colors.push(el.value);
                 })
             }
-            let card = {
+            let cardObject = {
                 card_name           : $("#card_name").val(),
                 card_cost           : `${cost.W ? cost.W + "-W_" : ""}${cost.Bu ? cost.Bu + "-Bu_" : ""}${cost.B ? cost.B + "-B_" : ""}${cost.R ? cost.R + "-R_" : ""}${cost.G ? cost.G + "-G_" : ""}${cost.N ? cost.N + "-N_" : ""}`.slice(0, -1),
                 card_legendary_state: $("#legendaryStatePostTrue").is(":checked"),
@@ -147,7 +147,11 @@ document.addEventListener("keydown", (event) => {
                 card_rarity         : $("#rarity").val(),
                 card_edition        : $("#edition").val(),
             }
-            console.log(card);
+            $(".postOne").css("display", "none")
+            $(".result").css("display", "flex");
+            let card = new Card(cardObject.card_name, cardObject.card_cost, cardObject.card_legendary_state, cardObject.card_type, cardObject.card_subtype, cardObject.card_effect, cardObject.card_rarity, cardObject.card_power, cardObject.card_toughness, cardObject.card_color);
+            $("#result").append(card.draw());
+
         }
         else {
             alert("Un des champs obligatoire n'est pas rempli!");
@@ -178,4 +182,23 @@ function getAllCards() {
     });
 }
 
-$(".postOne select[id:'type']")
+let selectedType = $(".postOne select[id='type']");
+selectedType.change(() => {
+    switch (selectedType.val()) {
+        case "Land":
+            $(".postOne .cost").css("display", "none");
+            $(".postOne .powtoughPost").css("display", "none");
+            $(".postOne .color").css("display", "flex");
+            break;
+        case "Artifact":
+        case "Creature":
+            $(".postOne .color").css("display", "none");
+            $(".postOne .powtoughPost").css("display", "flex");
+            $(".postOne .cost").css("display", "flex");
+            break;
+        default:
+            $(".postOne .cost").css("display", "flex");
+            $(".postOne .powtoughPost").css("display", "none");
+            $(".postOne .color").css("display", "none");
+    }
+})
