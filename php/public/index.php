@@ -29,4 +29,8 @@ if (isset($pdo)) {
     elseif (isset($_GET["all"])) {
         echo json_encode($cardManager->getAllCards());
     }
+    if (isset($_POST["card"])) {
+        $cardToInsert = new Card($_POST["card"]);
+        $cardManager->insertOneCard($cardToInsert);
+    }
 }

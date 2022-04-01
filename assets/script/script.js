@@ -70,6 +70,7 @@ document.addEventListener("keydown", (event) => {
     }
     if (key === "p" && !$(".writing").is(":focus")) {
         $(".validationPost").remove();
+        $(".result").removeClass("validation");
         $("#getOne").css("display", "none");
         $("#getAll").css("display", "none");
         $("#result").css("display", "none");
@@ -169,11 +170,11 @@ document.addEventListener("keydown", (event) => {
                 setTimeout(() => {
                     $(".result").addClass("validation");
                     $(`<h2 class="validationPost">Appuyez sur Enter pour valider</h2>`).insertAfter("#result");
-                }, 500)
+                }, 1000)
                 $(".result").css("display", "flex");
 
                 let card = new Card(cardObject.card_name, cardObject.card_cost, cardObject.card_legendary_state, cardObject.card_type, cardObject.card_subtype, cardObject.card_effect, cardObject.card_rarity, cardObject.card_power, cardObject.card_toughness, cardObject.card_color);
-                sessionStorage.setItem("customCard", JSON.stringify(card));
+                sessionStorage.setItem("customCard", JSON.stringify(cardObject));
                 $("#result").append(card.draw());
             }
             else {
@@ -186,9 +187,10 @@ document.addEventListener("keydown", (event) => {
     }
     if ($("#result").is(".validation") && key === "Enter") {
         $(".validationPost").remove();
-        let card = sessionStorage.getItem("customCard");
-        $.post("http://magicajax-php/", card, (el) => {
+        let data = {card: JSON.parse(sessionStorage.getItem("customCard"))};
+        $.post("http://magicajax-php/", data, (el) => {
             sessionStorage.removeItem("customCard");
+            $(".result").removeClass("validation");
         });
     }
 });

@@ -60,4 +60,10 @@ class CardManager
         }
         return $result;
     }
+
+    public function insertOneCard(Card $card) : bool
+    {
+        $sql     = "";
+        $prepare = $this->pdo->prepare($sql);
+    }
 }
