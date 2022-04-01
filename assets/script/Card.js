@@ -75,7 +75,7 @@ class Card {
             </div>
             <div class="rarity">
                 <p>${this.rarity}</p>`
-               + (this.type.toLowerCase() === "creature" ? `<div class="powtough ${this.cardboard_color}"><p>${this.power}</p><p>|</p><p>${this.toughness}</p>` : "") + `
+               + (this.type === "Creature" || this.subType.includes("Creature") && this.power !== "" && this.toughness !== "" && this.power >= 0 && this.toughness >= 0 ? `<div class="powtough ${this.cardboard_color}"><p>${this.power}</p><p>|</p><p>${this.toughness}</p>` : "") + `
                 </div>
             </div>
         </div>

@@ -99,7 +99,7 @@
             </select>
         </div>
         <div>
-            <label for="subtype">Sous-Type</label>
+            <label for="subtype">Sous-Type(**)</label>
             <input class="writing" id="subtype" type="text"/>
         </div>
         <div class="color">
@@ -158,7 +158,11 @@
             <label for="edition">Edition(*):</label>
             <input class="writing" id="edition" type="text"/>
         </div>
-        <p>(*) : Champs obligatoires</p>
+        <p>
+        (*) : Champs obligatoires
+            </br>
+        (**) : Si "Creature" n'est pas présent dans le texte, la force et l'endurance n'apparaîtra pas pour le sous-type si un <span class="underline">type</span> non Créature est sélectionné
+        </p>
     </form>
 </main>
 <script src="./assets/script/Card.js"></script>

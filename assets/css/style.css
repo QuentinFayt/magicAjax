@@ -64,10 +64,14 @@ section > div div p {
 }
 
 .nom,
-.type,
 .rarity {
     display : flex;
     gap     : 1em;
+}
+
+.type {
+    display : flex;
+    gap     : 5px;
 }
 
 .type {
@@ -88,6 +92,16 @@ section > div div p {
 .text {
     height     : 150px;
     overflow-y : scroll;
+}
+
+.text::-webkit-scrollbar {
+    width         : 10px;
+    border-radius : 5px;
+}
+
+.text::-webkit-scrollbar-thumb {
+    width         : 10px;
+    border-radius : 5px;
 }
 
 .text p {
@@ -151,7 +165,8 @@ section > div div p {
 
 .nom.mul,
 .type.mul,
-.powtough.mul {
+.powtough.mul,
+.text.mul::-webkit-scrollbar-thumb {
     background-color : #ccb978;
 }
 
@@ -173,7 +188,8 @@ section > div div p {
     background-color : #a69e9c;
 }
 
-.card.black {
+.card.black,
+.text.black::-webkit-scrollbar-thumb {
     background-color : #91775e;
 }
 
@@ -184,7 +200,8 @@ section > div div p {
     background-color : #c6d2be;
 }
 
-.card.green {
+.card.green,
+.text.green::-webkit-scrollbar-thumb {
     background-color : #549669;
 }
 
@@ -195,7 +212,8 @@ section > div div p {
     background-color : #f4d3c1;
 }
 
-.card.red {
+.card.red,
+.text.red::-webkit-scrollbar-thumb {
     background-color : #d85041;
 }
 
@@ -206,19 +224,26 @@ section > div div p {
     background-color : #e6f2f9;
 }
 
-.card.blue {
+.card.blue,
+.text.blue::-webkit-scrollbar-thumb {
     background-color : #6fcff1;
+}
+
+
+.card.white,
+.text.white::-webkit-scrollbar-thumb {
+    background-color : #fffbd5;
+}
+
+.text.white::-webkit-scrollbar-thumb {
+    border : 1px solid black;
 }
 
 .nom.white,
 .type.white,
 .powtough.white,
 .text.white {
-    background-color : #f3efe3;
-}
-
-.card.white {
-    background-color : #eae3d6;
+    background-color : #e2e0dd;
 }
 
 .nom.colorless,
@@ -228,7 +253,8 @@ section > div div p {
     background-color : #d1dbdd;
 }
 
-.card.colorless {
+.card.colorless,
+.text.colorless::-webkit-scrollbar-thumb {
     background-color : #8697a2;
 }
 
@@ -348,4 +374,12 @@ section > div div p {
 .postOne .powtoughPost,
 .postOne .cost {
     display : none;
+}
+
+.underline {
+    border-bottom : 3px solid black;
+}
+
+.validationPost {
+    text-align : center;
 }

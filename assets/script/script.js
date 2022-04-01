@@ -46,6 +46,8 @@ document.addEventListener("keydown", (event) => {
         });
     }
     if (key === "g" && !$(".writing").is(":focus")) {
+        $(".validationPost").remove();
+        $(".result").removeClass("validation");
         $("#getAll").css("display", "none");
         $("#postOne").css("display", "none");
         $("#result").css("display", "flex");
@@ -58,6 +60,8 @@ document.addEventListener("keydown", (event) => {
         }, 1)
     }
     if (key === "a" && !$(".writing").is(":focus")) {
+        $(".validationPost").remove();
+        $(".result").removeClass("validation");
         $("#getOne").css("display", "none");
         $("#postOne").css("display", "none");
         $("#result").css("display", "flex");
@@ -65,6 +69,7 @@ document.addEventListener("keydown", (event) => {
         $("#post_All").focus();
     }
     if (key === "p" && !$(".writing").is(":focus")) {
+        $(".validationPost").remove();
         $("#getOne").css("display", "none");
         $("#getAll").css("display", "none");
         $("#result").css("display", "none");
@@ -95,13 +100,14 @@ document.addEventListener("keydown", (event) => {
             $("#effect").val() !== "" &&
             $("#rarity") &&
             $("#edition") !== "") {
+
             let cost   = {
+                N : parseInt($("input[name='cost'][id='inCoCost']").val(), 10),
                 W : parseInt($("input[name='cost'][id='whiteCost']").val(), 10),
                 Bu: parseInt($("input[name='cost'][id='blueCost']").val(), 10),
                 B : parseInt($("input[name='cost'][id='blackCost']").val(), 10),
                 R : parseInt($("input[name='cost'][id='redCost']").val(), 10),
                 G : parseInt($("input[name='cost'][id='greenCost']").val(), 10),
-                N : parseInt($("input[name='cost'][id='inCoCost']").val(), 10),
             };
             let colors = [];
             if (cost.W > 0 || cost.Bu > 0 || cost.B > 0 || cost.R > 0 || cost.G > 0) {
@@ -125,7 +131,9 @@ document.addEventListener("keydown", (event) => {
                                 colorName = "Green";
                                 break;
                         }
-                        colors.push(colorName);
+                        if (colorName) {
+                            colors.push(colorName);
+                        }
                     }
                 }
             }
@@ -134,28 +142,54 @@ document.addEventListener("keydown", (event) => {
                     colors.push(el.value);
                 })
             }
-            let cardObject = {
-                card_name           : $("#card_name").val(),
-                card_cost           : `${cost.W ? cost.W + "-W_" : ""}${cost.Bu ? cost.Bu + "-Bu_" : ""}${cost.B ? cost.B + "-B_" : ""}${cost.R ? cost.R + "-R_" : ""}${cost.G ? cost.G + "-G_" : ""}${cost.N ? cost.N + "-N_" : ""}`.slice(0, -1),
-                card_legendary_state: $("#legendaryStatePostTrue").is(":checked"),
-                card_type           : $("#type").val(),
-                card_subtype        : $("#subtype").val(),
-                card_color          : colors.length ? colors.join("-") : "ColorLess",
-                card_effect         : $("#effect").val(),
-                card_power          : $("#power").val(),
-                card_toughness      : $("#toughness").val(),
-                card_rarity         : $("#rarity").val(),
-                card_edition        : $("#edition").val(),
-            }
-            $(".postOne").css("display", "none")
-            $(".result").css("display", "flex");
-            let card = new Card(cardObject.card_name, cardObject.card_cost, cardObject.card_legendary_state, cardObject.card_type, cardObject.card_subtype, cardObject.card_effect, cardObject.card_rarity, cardObject.card_power, cardObject.card_toughness, cardObject.card_color);
-            $("#result").append(card.draw());
+            if (($("#type").val() === "Creature" &&
+                 $("#power").val() !== ""
+                 && $("#toughness").val() !== ""
+                 && $("#power").val() >= 0
+                 && $("#toughness").val() >= 0)
+                || $("#type").val() !== "Creature") {
 
+
+                let cardObject = {
+                    card_name           : $("#card_name").val(),
+                    card_cost           : `${cost.N ? cost.N + "-N_" : ""}${cost.W ? cost.W + "-W_" : ""}${cost.Bu ? cost.Bu + "-Bu_" : ""}${cost.B ? cost.B + "-B_" : ""}${cost.R ? cost.R + "-R_" : ""}${cost.G ? cost.G + "-G_" : ""}`.slice(0, -1),
+                    card_legendary_state: $("#legendaryStatePostTrue").is(":checked"),
+                    card_type           : $("#type").val(),
+                    card_subtype        : $("#subtype").val(),
+                    card_color          : colors.length ? colors.join("-") : "ColorLess",
+                    card_effect         : $("#effect").val(),
+                    card_power          : $("#power").val(),
+                    card_toughness      : $("#toughness").val(),
+                    card_rarity         : $("#rarity").val(),
+                    card_edition        : $("#edition").val(),
+                }
+                $(".postOne").css("display", "none")
+                $("#result").css("overflow-y", "inherit");
+                $(".result").empty();
+                setTimeout(() => {
+                    $(".result").addClass("validation");
+                    $(`<h2 class="validationPost">Appuyez sur Enter pour valider</h2>`).insertAfter("#result");
+                }, 500)
+                $(".result").css("display", "flex");
+
+                let card = new Card(cardObject.card_name, cardObject.card_cost, cardObject.card_legendary_state, cardObject.card_type, cardObject.card_subtype, cardObject.card_effect, cardObject.card_rarity, cardObject.card_power, cardObject.card_toughness, cardObject.card_color);
+                sessionStorage.setItem("customCard", JSON.stringify(card));
+                $("#result").append(card.draw());
+            }
+            else {
+                alert("Une créature doit avoir une force et une endurance!");
+            }
         }
         else {
             alert("Un des champs obligatoire n'est pas rempli!");
         }
+    }
+    if ($("#result").is(".validation") && key === "Enter") {
+        $(".validationPost").remove();
+        let card = sessionStorage.getItem("customCard");
+        $.post("http://magicajax-php/", card, (el) => {
+            sessionStorage.removeItem("customCard");
+        });
     }
 });
 $("#post_All").click((event) => {
