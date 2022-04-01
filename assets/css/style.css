@@ -86,7 +86,12 @@ section > div div p {
 }
 
 .text {
-    height : 150px;
+    height     : 150px;
+    overflow-y : scroll;
+}
+
+.text p {
+    overflow-wrap : anywhere;
 }
 
 .nom p:first-child,
