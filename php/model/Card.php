@@ -157,4 +157,92 @@ class Card
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getCardName() : string
+    {
+        return $this->card_name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCardCost() : string
+    {
+        return $this->card_cost;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCardColor() : string
+    {
+        return $this->card_color;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getCardLegendaryState() : bool
+    {
+        return $this->card_legendary_state;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCardType() : string
+    {
+        return $this->card_type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCardSubtype() : string
+    {
+        return $this->card_subtype;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCardEffect() : string
+    {
+        return $this->card_effect;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCardPower() : int
+    {
+        return $this->card_power;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCardToughness() : int
+    {
+        return $this->card_toughness;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCardRarity() : string
+    {
+        return $this->card_rarity;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCardEdition() : string
+    {
+        return $this->card_edition;
+    }
+
 }
