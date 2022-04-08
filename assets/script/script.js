@@ -178,8 +178,8 @@ document.addEventListener("keydown", (event) => {
     if ($("#result").is(".validation") && key === "Enter") {
         $(".validationPost").remove();
         let data = {card: JSON.parse(sessionStorage.getItem("customCard"))};
-        $.post("http://magicajax-php/", data, (el) => {
-            if (JSON.parse(el).result === "success") {
+        $.post("http://magicajax-php/", data, (json) => {
+            if (json.result === "success") {
                 sessionStorage.removeItem("customCard");
                 alert("La carte a bien été insérée!")
             }
@@ -191,18 +191,40 @@ document.addEventListener("keydown", (event) => {
     }
 
     if ($(".postOne").css("display") === "flex") {
-        let effect      = document.querySelector(".effect");
-        let contextMenu = document.querySelector("#context-menu");
-        effect.addEventListener("contextmenu", (e) => {
-            e.preventDefault();
-
-            let {clientX: mouseX, clientY: mouseY} = e;
-
-            contextMenu.style.top  = `${mouseY}px`;
-            contextMenu.style.left = `${mouseX}px`;
-
-            contextMenu.classList.add("visible");
-        });
+        $(".effect").contextmenu(customMenu);
+        $("html").click((e) => {
+            if (e.target.offsetParent !== document.querySelector("#context-menu")) {
+                $("#context-menu").remove();
+            }
+            else {
+                let caracterToAdd = "";
+                switch (e.target.id) {
+                    case "#conMTap":
+                        caracterToAdd = "-_Tap_-";
+                        break;
+                    case "#conMInco":
+                        caracterToAdd = "-_X-N_-";
+                        break;
+                    case "#conMWhite":
+                        caracterToAdd = "-_X-W_-";
+                        break;
+                    case "#conMBlue":
+                        caracterToAdd = "-_X-Bu_-";
+                        break;
+                    case "#conMBlack":
+                        caracterToAdd = "-_X-B_-";
+                        break;
+                    case "#conMRed":
+                        caracterToAdd = "-_X-R_-";
+                        break;
+                    case "#conMGreen":
+                        caracterToAdd = "-_X-G_-";
+                        break;
+                }
+                let currentEffect = $(".effect").val();
+                $(".effect").val(addString(currentEffect, e.target.selectionStart, caracterToAdd));
+            }
+        })
     }
 });
 
@@ -216,8 +238,7 @@ function changeDisplay(arrayObj) {
 function getAllCards() {
     $("#result").css("overflow-y", "scroll");
     let data = {"all": true};
-    $.get("http://magicajax-php/", data, (el) => {
-        let json = JSON.parse(el);
+    $.get("http://magicajax-php/", data, (json) => {
         if (!json.error) {
             $("#result").empty();
             json.forEach(cardObject => {
@@ -230,11 +251,7 @@ function getAllCards() {
 
 $("#post_All").click((event) => {
     event.preventDefault();
-    let data = {"all": true};
-    $.get("http://magicajax-php/", data, (el) => {
-        let json = JSON.parse(el);
-        getAllCards();
-    });
+    getAllCards();
 })
 let selectedType = $(".postOne select[id='type']");
 selectedType.change(() => {
@@ -252,3 +269,27 @@ selectedType.change(() => {
     }
     changeDisplay(arraySelectorProperty);
 })
+
+function customMenu(e) {
+    e.preventDefault();
+    let {clientX: mouseX, clientY: mouseY} = e;
+    if ($("#context-menu").length) {
+        $("#context-menu").remove();
+    }
+    $("body").append(`
+        <div id="context-menu" style="top:${mouseY}px;left:${mouseX}px">
+            <p>Add:</p>
+            <div class="opt" id="#conMTap">Tap</div>
+            <div class="opt" id="#conMInco">X Incolore</div>
+            <div class="opt" id="#conMWhite">X Blanc</div>
+            <div class="opt" id="#conMBlue">X Bleu</div>
+            <div class="opt" id="#conMBlack">X Noir</div>
+            <div class="opt" id="#conMRed">X Rouge</div>
+            <div class="opt" id="#conMGreen">X Vert</div>
+        </div>
+    `);
+}
+
+function addString(str, index, stringToAdd) {
+    return str.substring(0, index) + stringToAdd + str.substring(index, str.length);
+}
