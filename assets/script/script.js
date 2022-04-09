@@ -189,44 +189,43 @@ document.addEventListener("keydown", (event) => {
             $(".result").removeClass("validation");
         });
     }
-
-    if ($(".postOne").css("display") === "flex") {
-        $(".effect").contextmenu(customMenu);
-        $("html").click((e) => {
-            if (e.target.offsetParent !== document.querySelector("#context-menu")) {
-                $("#context-menu").remove();
-            }
-            else {
-                let caracterToAdd = "";
-                switch (e.target.id) {
-                    case "#conMTap":
-                        caracterToAdd = "-_Tap_-";
-                        break;
-                    case "#conMInco":
-                        caracterToAdd = "-_X-N_-";
-                        break;
-                    case "#conMWhite":
-                        caracterToAdd = "-_X-W_-";
-                        break;
-                    case "#conMBlue":
-                        caracterToAdd = "-_X-Bu_-";
-                        break;
-                    case "#conMBlack":
-                        caracterToAdd = "-_X-B_-";
-                        break;
-                    case "#conMRed":
-                        caracterToAdd = "-_X-R_-";
-                        break;
-                    case "#conMGreen":
-                        caracterToAdd = "-_X-G_-";
-                        break;
-                }
-                let currentEffect = $(".effect").val();
-                $(".effect").val(addString(currentEffect, e.target.selectionStart, caracterToAdd));
-            }
-        })
-    }
 });
+
+$(".effect").contextmenu(customMenu);
+$("html").click((event) => {
+    if (event.target.offsetParent !== document.querySelector("#context-menu")) {
+        $("#context-menu").remove();
+    }
+    else {
+        let caracterToAdd = "";
+        switch (event.target.id) {
+            case "#conMTap":
+                caracterToAdd = "-_Tap_-";
+                break;
+            case "#conMInco":
+                caracterToAdd = "-_X-N_-";
+                break;
+            case "#conMWhite":
+                caracterToAdd = "-_X-W_-";
+                break;
+            case "#conMBlue":
+                caracterToAdd = "-_X-Bu_-";
+                break;
+            case "#conMBlack":
+                caracterToAdd = "-_X-B_-";
+                break;
+            case "#conMRed":
+                caracterToAdd = "-_X-R_-";
+                break;
+            case "#conMGreen":
+                caracterToAdd = "-_X-G_-";
+                break;
+        }
+        let effect   = document.querySelector(".effect");
+        effect.value = addString(effect.value, effect.selectionStart, caracterToAdd);
+    }
+})
+
 
 function changeDisplay(arrayObj) {
     arrayObj.forEach((obj) => {
