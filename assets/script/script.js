@@ -3,7 +3,7 @@ window.addEventListener("load", () => {
 })
 document.addEventListener("keydown", (event) => {
     let key = event.key;
-    if (key === "g" && !$(".writing").is(":focus")) {
+    if ((key === "g" || key === "G") && !$(".writing").is(":focus")) {
         $(".validationPost").remove();
         $(".result").removeClass("validation");
         changeDisplay([{"#getAll": "none"}, {"#postOne": "none"}, {"#result": "flex"}, {"#getOne": "block"}]);
@@ -20,7 +20,7 @@ document.addEventListener("keydown", (event) => {
         $("#post_name").prop("checked", check);
         $("#post").focus();
     }
-    if (key === "a" && !$(".writing").is(":focus")) {
+    if ((key === "a" || key === "A") && !$(".writing").is(":focus")) {
         $(".validationPost").remove();
         $(".result").removeClass("validation");
         changeDisplay([{"#getAll": "flex"}, {"#postOne": "none"}, {"#result": "flex"}, {"#getOne": "none"}]);
@@ -38,7 +38,7 @@ document.addEventListener("keydown", (event) => {
             scrollWindow.scroll(0, pos)
         }
     }
-    if (key === "p" && !$(".writing").is(":focus")) {
+    if ((key === "p" || key === "P") && !$(".writing").is(":focus")) {
         $(".validationPost").remove();
         $(".result").removeClass("validation");
         changeDisplay([{"#getAll": "none"}, {"#postOne": "flex"}, {"#result": "none"}, {"#getOne": "none"}]);
@@ -83,7 +83,7 @@ document.addEventListener("keydown", (event) => {
         event.preventDefault();
         getAllCards();
     }
-    if ($(".postOne").css("display") === "flex" && key === "Enter") {
+    if ($(".postOne").css("display") === "flex" && key === "Enter" && !$(".effect").is(":focus")) {
         event.preventDefault();
         if ($("#card_name").val() !== "" &&
             ($("#legendaryStatePostTrue").is(":checked") ||
